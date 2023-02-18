@@ -41,7 +41,7 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 
 async function run(){
     try{
-        await client.connect();
+         client.connect();
         const newsCollection = client.db('honest_news_hub').collection('allnews');
 
         app.post('/shownews', async(req, res)=>{
