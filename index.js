@@ -137,14 +137,13 @@ async function run(){
     
 
     // all post methods
-    app.post('/allnews',upload.single("image"), (req,res)=>{
+    app.post('/allnews', (req,res)=>{
       console.log('request', req.body)
       
       const post = ({
         title : req.body.title,
         section: req.body.section,
-        details: req.body.details,
-        image: req.file.image
+        details: req.body.details
       })
       newsCollection.insertOne(post)
      .then(result =>{
