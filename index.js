@@ -137,14 +137,9 @@ async function run(){
     
 
     // all post methods
-    app.post('/allnews', (req,res)=>{
-      console.log('request', req.body)
+    app.post('/allnews', async(req,res)=>{
       
-      const post = ({
-        title : req.body.title,
-        section: req.body.section,
-        details: req.body.details
-      })
+      const post = req.body
       newsCollection.insertOne(post)
      .then(result =>{
         console.log('data successfully')
