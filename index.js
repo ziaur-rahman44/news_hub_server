@@ -138,41 +138,12 @@ async function run(){
 
     // all post methods
     app.post('/allnews', async(req,res)=>{
+      const post = req.body;
+       const result = await newsCollection.insertOne(post)
+       res.send(result)
       
-      const post = req.body
-      newsCollection.insertOne(post)
-     .then(result =>{
-        console.log('data successfully')
-        res.send('success')
-     })
     })
-    
-    // post with image
-    //  app.post('/allnews', upload.single("image"),(req,res)=>{
-    //   console.log('request', req.body)
-    //   const img = req.file.filename;
-    //   const news = (
-    //     req.body,
-    //     img
-    //   );
-    //   newsCollection.insertOne(news)
-    //  .then(result =>{
-    //     console.log('data successfully')
-    //     res.send('success')
-    //  })
-    // })
 
-
-    // app.post('/start',(req,res)=>{
-    //   const search = req.body.search
-    //   newsCollection.find({title:search})
-    //  .then(result =>{
-    //     console.log('data successfully')
-    //     res.send('success')
-    //  })
-    // })
-  
-// delete data in newslist and page
 
     app.delete("/allnews/:id",async (req, res)=>{
       console.log(req.params.id)
